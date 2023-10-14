@@ -216,6 +216,32 @@ plt.xticks(rotation=90)
 plt.tight_layout()
 plt.show()
 
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+# Make predictions on the test set
+y_pred = model.predict(test_set)
+
+# Get the true labels from the test set
+y_true = test_set.classes
+
+# Convert one-hot encoded predictions to class labels
+y_pred_classes = np.argmax(y_pred, axis=1)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_true, y_pred_classes)
+print(f"Accuracy: {accuracy}")
+
+# Generate the classification report
+class_names = list(test_set.class_indices.keys())
+report = classification_report(y_true, y_pred_classes, target_names=class_names)
+print("Classification Report:")
+print(report)
+
+# Generate the confusion matrix
+confusion_mat = confusion_matrix(y_true, y_pred_classes)
+print("Confusion Matrix:")
+print(confusion_mat)
+
 # Save the trained model
 model.save('/kaggle/working/resnet_plant_disease_model.h5')
 
