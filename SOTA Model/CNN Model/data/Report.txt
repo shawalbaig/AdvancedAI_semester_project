@@ -1,0 +1,42 @@
+Class Name  						Precision  Recall  F1-Score 
+Apple___Apple_scab   					0.989733  0.934109 0.961117     
+Apple___Black_rot   					0.980080  0.976190 0.978131        
+Apple___Cedar_apple_rust   				1.000000  0.972603 0.986111          
+Apple___healthy   					0.990038  0.988523 0.989280        
+Blueberry___healthy   					0.992494  0.998322 0.995399       
+Cherry_(including_sour)___Powdery_mildew   		0.972477  0.992974 0.982619        
+Cherry_(including_sour)___healthy   			0.977645  0.984985 0.981301        
+Corn_(maize)___Cercospora_leaf_spot Gray_leaf_Spot   	0.981183  0.885922 0.931122        
+Corn_(maize)___Common_rust_   				0.996914  1.000000 0.998454       
+Corn_(maize)___Northern_Leaf_Blight   			0.941107  0.990087 0.964976  
+Corn_(maize)___healthy   				1.000000  0.998918 0.999459  
+Grape___Black_rot   					0.973629  0.979830 0.976720  
+Grape___Esca_(Black_Measles)   				0.996393  0.988372 0.992366   
+Grape___Leaf_blight_(Isariopsis_Leaf_Spot)   		0.979215  0.997647 0.988345  
+Grape___healthy   					0.993865  0.972973 0.983308  
+Orange___Haunglongbing_(Citrus_greening)   		0.998867  0.995708 0.997285  
+Peach___Bacterial_spot   				0.988069  0.989680 0.988874  
+Peach___healthy   					1.000000  0.996441 0.998217  
+Pepper,_bell___Bacterial_spot   			0.975248  0.988708 0.981931  
+Pepper,_bell___healthy   				0.989409  0.973090 0.981182 
+Potato___Early_blight   				1.000000  0.994962 0.997475   
+Potato___Late_blight   					0.973651  0.972431 0.973041  
+Potato___healthy   					0.888112  1.000000 0.940741  
+Raspberry___healthy   					1.000000  1.000000 1.000000  
+Soybean___healthy   					0.991388  0.991876 0.991632  
+Squash___Powdery_mildew   				0.997962  0.998640 0.998301  
+Strawberry___Leaf_scorch   				0.994166  0.995327 0.994746  
+Strawberry___healthy   					0.988796  1.000000 0.994366  
+Tomato___Bacterial_spot   				0.995080  0.947862 0.970897   
+Tomato___Early_blight   				0.959698  0.954887 0.957286  
+Tomato___Late_blight   					0.969599  0.975277 0.972429  
+Tomato___Leaf_Mold   					0.984021  0.994616 0.989290  
+Tomato___Septoria_leaf_spot   				0.972678  0.989576 0.981054  
+Tomato___Spider_mites Two-spotted_spider_mite   	0.967320  0.990335 0.978692  
+Tomato___Target_Spot   					0.972826  0.963229 0.968004  
+Tomato___Tomato_Yellow_Leaf_Curl_Virus   		0.990078  0.995592 0.992827  
+Tomato___Tomato_mosaic_virus   				1.000000  0.996575 0.998285  
+Tomato___healthy   					0.998448  0.997674 0.998061
+Accuracy								   0.9792 
+
+

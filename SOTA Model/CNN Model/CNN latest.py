@@ -198,7 +198,7 @@ plot_weight_histograms(model)
 
 # Feature Map Visualization
 # Function to visualize feature maps of a specific layer
-def visualize_feature_maps(model, layer_num, image):
+'''def visualize_feature_maps(model, layer_num, image):
     # Set the model to evaluation mode
     model.eval()
 
@@ -220,10 +220,10 @@ def visualize_feature_maps(model, layer_num, image):
     plt.show()
 
 # Choose an image from the dataset
-image, label = train_dataset[0]
+image, label = train_dataset[0]'''
 
 # Visualize feature maps for the first convolutional layer
-visualize_feature_maps(model, 1, image.to(device))
+'''visualize_feature_maps(model, 1, image.to(device))
 
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 model.eval()  # Set the model to evaluation mode
@@ -252,4 +252,26 @@ print("Accuracy:", accuracy)
 print("Precision:", precision)
 print("Recall:", recall)
 print("F1 Score:", f1)
-print("\nClassification Report:\n", report)
+print("\nClassification Report:\n", report)'''
+
+import pandas as pd
+from sklearn.metrics import classification_report
+
+# Assuming you have already obtained the classification report
+class_names = [class_name for class_name in full_dataset.classes]
+report = classification_report(true_labels, predicted_labels, target_names=class_names, output_dict=True)
+
+# Create a dictionary to store the metrics
+metrics_dict = {
+    "Class Name": class_names,
+    "Precision": [report[class_name]["precision"] for class_name in class_names],
+    "Recall": [report[class_name]["recall"] for class_name in class_names],
+    "F1-Score": [report[class_name]["f1-score"] for class_name in class_names],
+    "Support": [report[class_name]["support"] for class_name in class_names],
+}
+
+# Create a pandas DataFrame from the dictionary
+metrics_df = pd.DataFrame(metrics_dict)
+
+# Print the table
+print(metrics_df)
