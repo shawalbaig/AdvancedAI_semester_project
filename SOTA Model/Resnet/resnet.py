@@ -76,6 +76,9 @@ for image_path, label in zip(valid_paths, valid_labels):
 print("Data Loaded, Loading Model...")
 
 # Load the pre-trained ResNet50 model (rgb images, imagenet, final FC layer not included (customize for 38 classes))
+# By setting 'include_top' to 'False,' i am excluding the final classification layer of the ResNet model.
+# allows me to use all the information that the resnet model has learnt from the image net dataset and apply it to my problem which involes 38 classes.
+# in a nutshel i am customizing the pretrained model to fit my problem that im looking to solve.
 resnet = ResNet50(input_shape=IMAGE_SIZE + [3], weights='imagenet', include_top=False)
 
 for layer in resnet.layers:
