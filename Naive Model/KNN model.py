@@ -63,7 +63,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 # Create the k-NN Classifier
-k = 5  # Example: You can adjust the number of neighbors
+k = 5 
 knn_classifier = KNeighborsClassifier(n_neighbors=k)
 
 # Training

@@ -20,6 +20,7 @@ from tensorflow.keras.models import load_model
 
 print("Beginning...")
 
+# TensorFlow Configurations
 config = ConfigProto()
 config.gpu_options.per_process_gpu_memory_fraction = 0.75
 config.gpu_options.allow_growth = True
@@ -74,7 +75,7 @@ for image_path, label in zip(valid_paths, valid_labels):
 
 print("Data Loaded, Loading Model...")
 
-# Load the pre-trained ResNet50 model
+# Load the pre-trained ResNet50 model (rgb images, imagenet, final FC layer not included (customize for 38 classes))
 resnet = ResNet50(input_shape=IMAGE_SIZE + [3], weights='imagenet', include_top=False)
 
 for layer in resnet.layers:
@@ -82,7 +83,7 @@ for layer in resnet.layers:
 
 x = Flatten()(resnet.output)
 
-# Define the model architecture
+# Define the model architecture, adds a FC layer of 38 neurons. activation softmax
 prediction = Dense(38, activation='softmax')(x)
 model = Model(inputs=resnet.input, outputs=prediction)
 
@@ -108,7 +109,7 @@ train_datagen = ImageDataGenerator(
 training_set = train_datagen.flow_from_directory(
     train_path,
     target_size=(256, 256),
-    batch_size=32,
+    batch_size=32, #no. of samples processsed during each iteration
     class_mode='categorical',
     subset='training'
 )
@@ -153,7 +154,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
 # Define the layer name for feature map extraction
-layer_name = 'conv1_conv'
+'''layer_name = 'conv1_conv'
 
 # Create a model to extract feature maps from the chosen layer
 feature_map_model = Model(inputs=model.input, outputs=model.get_layer(layer_name).output)
@@ -179,7 +180,7 @@ for i in range(16):
     plt.axis('off')
 
 plt.tight_layout()
-plt.show()
+plt.show()'''
 
 from sklearn.metrics import classification_report
 
@@ -237,10 +238,10 @@ report = classification_report(y_true, y_pred_classes, target_names=class_names)
 print("Classification Report:")
 print(report)
 
-# Generate the confusion matrix
+'''# Generate the confusion matrix
 confusion_mat = confusion_matrix(y_true, y_pred_classes)
 print("Confusion Matrix:")
-print(confusion_mat)
+print(confusion_mat)'''
 
 # Save the trained model
 model.save('/kaggle/working/resnet_plant_disease_model.h5')

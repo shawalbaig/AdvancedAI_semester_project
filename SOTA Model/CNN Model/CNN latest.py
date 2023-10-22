@@ -19,11 +19,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Hyperparameters
 batch_size = 32
 learning_rate = 0.001
-num_epochs = 100
+num_epochs = 50
 
-# Define the CNN model
+# Define the CNN model (nn.Module base class for PyTorch Models)
 class CNNModel(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes): # Initialize layers alongside acticvation functions
         super(CNNModel, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1)
         self.relu1 = nn.ReLU()
@@ -36,7 +36,7 @@ class CNNModel(nn.Module):
         self.relu3 = nn.ReLU()
         self.fc2 = nn.Linear(512, num_classes)
 
-    def forward(self, x):
+    def forward(self, x): # how data flows through the layers 
         x = self.conv1(x)
         x = self.relu1(x)
         x = self.maxpool1(x)
@@ -92,12 +92,13 @@ for epoch in range(num_epochs):
     for i, (inputs, labels) in enumerate(train_loader):
         inputs, labels = inputs.to(device), labels.to(device)
 
+        #  clears the gradients of the model's parameters before computing the gradients for the current batch
         optimizer.zero_grad()
 
-        outputs = model(inputs)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
+        outputs = model(inputs) # forward-propagates
+        loss = criterion(outputs, labels) # calculates the loss between the predicted outputs and the actual labels
+        loss.backward() # BackProp (computes the gradients of the loss with respect to the model's parameters)
+        optimizer.step() # updates the model's parameters
 
         running_loss += loss.item()
 
